@@ -2,6 +2,8 @@ const navToggle = document.querySelectorAll(".body-nav-toggle");
 const mainBtns = document.querySelectorAll(".main-btn");
 const pageContent = document.querySelectorAll(".main-content");
 const main = document.querySelector(".main");
+const moreBtn = document.getElementById("special0");
+const moreContent = document.querySelector(".moreDivContainer");
 // functions
 const changeTab = (e) => {
     const id = e.target.dataset.id;
@@ -47,4 +49,13 @@ main.addEventListener("click", (e) => {
     changeTab(e);
     changePage(e);
     changeContent(e);
+});
+moreBtn.addEventListener("click", () => {
+    moreContent.classList.toggle("activeMore");
+    if (moreContent.classList.contains("activeMore")) {
+        moreBtn.innerHTML = "More -";
+    }
+    else {
+        moreBtn.innerHTML = "More +";
+    }
 });

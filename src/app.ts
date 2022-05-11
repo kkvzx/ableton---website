@@ -5,6 +5,8 @@ const pageContent: NodeListOf<Element> =
   document.querySelectorAll(".main-content");
 const main: HTMLElement = document.querySelector(".main");
 
+const moreBtn: HTMLElement = document.getElementById("special0");
+const moreContent: Element = document.querySelector(".moreDivContainer");
 // functions
 
 const changeTab = (e: Event): void => {
@@ -61,4 +63,14 @@ main.addEventListener("click", (e: Event) => {
   changeTab(e);
   changePage(e);
   changeContent(e);
+});
+
+moreBtn.addEventListener("click", () => {
+  moreContent.classList.toggle("activeMore");
+
+  if (moreContent.classList.contains("activeMore")) {
+    moreBtn.innerHTML = "More -";
+  } else {
+    moreBtn.innerHTML = "More +";
+  }
 });

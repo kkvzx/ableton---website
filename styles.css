@@ -1,5 +1,5 @@
 /* styling */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;600&display=swap");
 
 /* variables */
 :root {
@@ -40,16 +40,23 @@ javascript
 .activeLinks {
   display: flex !important;
 }
+.activeMore {
+  display: grid !important;
+}
 
 /* ==========
     HEADER
     ========= */
+/* Change from flex to grid mas made during editing so its a little bit of a mess */
 .container {
-  display: flex;
-  align-items: center;
-  height: 4rem;
-  width: 85vw;
-  min-width: 1060px;
+  display: grid;
+  /* grid-auto-columns: minmax(150px, auto); */
+  grid-template-columns: 100%;
+  grid-auto-rows: 4.2rem auto auto;
+  gap: 0;
+  align-content: start;
+  /* align-items: center; */
+  /* min-width: 1060px; */
   border-bottom: 3px solid var(--cc-bck);
   color: black;
 }
@@ -57,7 +64,7 @@ javascript
 .item2,
 .item3 {
   width: 200px;
-  margin: 10px;
+  margin: var(--sp-links);
   font-family: var(--ff-primary);
   font-size: var(--ff-size);
   letter-spacing: var(--letter-sp);
@@ -65,10 +72,8 @@ javascript
 }
 /* logo */
 .item1 {
-  width: 55px;
+  width: 70px;
   min-height: 30px;
-  flex-shrink: 0;
-
   margin: var(--sp-links);
 }
 .logo {
@@ -104,14 +109,19 @@ ul {
   text-decoration: none;
   color: black;
   text-transform: capitalize;
-  margin: 0;
 }
 #special0 {
   color: var(--cc-spec0);
 }
+.gridElementOne {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  /* height: 4.2rem; */
+}
 /* right menu */
 .item3 {
-  width: 500px;
+  min-width: 370px;
   margin-left: auto;
   min-height: 20px;
 }
@@ -121,6 +131,7 @@ ul {
 .item3 ul li {
   margin: 0 0 0 var(--sp-links);
 }
+
 #special1 {
   color: var(--cc-spec1);
 }
@@ -128,6 +139,75 @@ ul {
   font-size: var(--ff-spec2);
   margin-right: var(--sp-links);
 }
+/* More buttons starts here */
+/* main more button container */
+.moreDivContainer {
+  display: grid;
+  display: none;
+}
+.moreOnContainer {
+  width: 100%;
+  margin: 1.2rem 0;
+}
+.moreOnContainer h3,
+.moreFromContainer h3 {
+  margin: 0 var(--sp-links);
+  font-family: var(--ff-primary);
+  letter-spacing: 3px;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+}
+.moreOnContainer ul {
+  list-style: none;
+  margin-left: var(--sp-links);
+  margin-top: 0.5rem;
+}
+.moreOnContainer ul li {
+  display: inline-block;
+  margin-right: 1.2rem;
+}
+
+.moreOnContainer ul li a,
+.moreFromTextDiv a p {
+  text-decoration: none;
+  font-family: var(--ff-primary);
+  font-weight: 300;
+  font-size: 1rem;
+  color: black;
+  margin-top: 0;
+}
+.moreFromContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  margin: 1.2rem var(--sp-links);
+}
+.moreFromContainerGridEl {
+  width: 100%;
+  grid-column-start: -1;
+  grid-column-end: 1;
+}
+.moreFromTextDiv {
+  width: 16rem;
+  height: 5rem;
+  margin-top: 0.4rem;
+  margin-bottom: 2rem;
+}
+.moreFromTextDiv a {
+  text-decoration: none;
+  color: black;
+  font-family: var(--ff-primary);
+}
+.moreFromTextDiv a h4 {
+  margin-top: 0.7rem;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+.moreFromContainerGridEl h3 {
+  margin: 0;
+}
+/* More buttons starts ends */
+
 /* ==========
     CONTENT
     ========= */
@@ -136,6 +216,10 @@ ul {
   font-size: var(--ff-spec2);
   font-family: var(--ff-primary);
   font-weight: 700;
+  margin-left: var(--sp-links);
+}
+.body-nav li {
+  margin-left: 0;
 }
 
 /* body */
