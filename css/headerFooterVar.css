@@ -1,0 +1,317 @@
+/* styling */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;600&display=swap");
+
+/* variables */
+:root {
+  --sp-links: 1.8rem;
+  --ff-primary: "Roboto", sans-serif;
+  --ff-size: 1rem;
+  --letter-sp: 1.5px;
+  --cc-bck: rgba(228, 228, 228, 0.534);
+  --cc-main: white;
+  --cc-spec0: #ff764d;
+  --cc-spec1: #0000ff;
+  --ff-spec2: 0.8rem;
+}
+
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--cc-bck);
+  font-weight: 700;
+  min-height: 100%;
+}
+.main {
+  width: 85vw;
+  min-width: 1060px;
+  height: 100vh;
+  background: var(--cc-main);
+  margin: 0 auto;
+}
+
+/* ================
+javascript
+================ */
+.active {
+  color: #ff764d !important;
+}
+.activeLinks {
+  display: flex !important;
+}
+.activeMore {
+  display: grid !important;
+}
+
+/* ==========
+    HEADER
+    ========= */
+/* Change from flex to grid mas made during editing so its a little bit of a mess */
+.container {
+  display: grid;
+  /* grid-auto-columns: minmax(150px, auto); */
+  grid-template-columns: 100%;
+  grid-auto-rows: 4.2rem auto auto;
+  gap: 0;
+  align-content: start;
+  /* align-items: center; */
+  /* min-width: 1060px; */
+  border-bottom: 3px solid var(--cc-bck);
+  color: black;
+}
+.item1,
+.item2,
+.item3 {
+  width: 200px;
+  margin: var(--sp-links);
+  font-family: var(--ff-primary);
+  font-size: var(--ff-size);
+  letter-spacing: var(--letter-sp);
+  /* background:grey; */
+}
+/* logo */
+.item1 {
+  width: 70px;
+  min-height: 30px;
+  margin: var(--sp-links);
+}
+.logo {
+  width: 65px;
+}
+/* main menu */
+.item2 {
+  width: 700px;
+  min-height: 20px;
+  margin: 0;
+  /* flex-grow:4; */
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+.item2 ul li,
+.item3 ul li,
+.body-nav li,
+.footer-end-links ul li {
+  display: inline;
+  margin: 20px;
+  padding: 0;
+}
+.item2 ul li,
+.footer-end-links ul li {
+  margin: 0 var(--sp-links) 0 0;
+}
+.item2 ul li a,
+.item3 ul li a,
+.body-nav li a,
+.body-nav-toggle {
+  text-decoration: none;
+  color: black;
+  text-transform: capitalize;
+}
+#special0 {
+  color: var(--cc-spec0);
+}
+.gridElementOne {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  /* height: 4.2rem; */
+}
+/* right menu */
+.item3 {
+  min-width: 370px;
+  margin-left: auto;
+  min-height: 20px;
+}
+.item3 ul {
+  text-align: right;
+}
+.item3 ul li {
+  margin: 0 0 0 var(--sp-links);
+}
+
+#special1 {
+  color: var(--cc-spec1);
+}
+#special2 {
+  font-size: var(--ff-spec2);
+  margin-right: var(--sp-links);
+}
+/* More buttons starts here */
+/* main more button container */
+.moreDivContainer {
+  display: grid;
+  display: none;
+}
+.moreOnContainer {
+  width: 100%;
+  margin: 1.2rem 0;
+}
+.moreOnContainer h3,
+.moreFromContainer h3 {
+  margin: 0 var(--sp-links);
+  font-family: var(--ff-primary);
+  letter-spacing: 3px;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+}
+.moreOnContainer ul {
+  list-style: none;
+  margin-left: var(--sp-links);
+  margin-top: 0.5rem;
+}
+.moreOnContainer ul li {
+  display: inline-block;
+  margin-right: 1.2rem;
+}
+
+.moreOnContainer ul li a,
+.moreFromTextDiv a p {
+  text-decoration: none;
+  font-family: var(--ff-primary);
+  font-weight: 300;
+  font-size: 1rem;
+  color: black;
+  margin-top: 0;
+}
+.moreFromContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  margin: 1.2rem var(--sp-links);
+}
+.moreFromContainerGridEl {
+  width: 100%;
+  grid-column-start: -1;
+  grid-column-end: 1;
+}
+.moreFromTextDiv {
+  width: 16rem;
+  height: 5rem;
+  margin-top: 0.4rem;
+  margin-bottom: 2rem;
+}
+.moreFromTextDiv a {
+  text-decoration: none;
+  color: black;
+  font-family: var(--ff-primary);
+}
+.moreFromTextDiv a h4 {
+  margin-top: 0.7rem;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+.moreFromContainerGridEl h3 {
+  margin: 0;
+}
+/* More buttons starts ends */
+
+/* ==========
+    FOOTER
+    ========= */
+
+.footer-container {
+  border-top: 3px solid var(--cc-bck);
+  background: var(--cc-main);
+  padding: 8%;
+  padding-bottom: 0;
+  padding-top: 4rem;
+  width: 84%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  grid-auto-columns: minmax(150px, auto);
+  grid-auto-rows: 0.5fr 1fr 1fr 1fr;
+  justify-content: center;
+}
+.gridElement {
+  list-style: none;
+  text-decoration: none;
+  font-family: var(--ff-primary);
+  font-size: 1.1rem;
+  margin: 0;
+  letter-spacing: 1.2px;
+  box-sizing: border-box;
+}
+.gridElement ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: 300;
+}
+.gridElement ul li {
+  margin: 10px;
+}
+.gridElement p {
+  font-weight: 300;
+}
+.gridElement input {
+  height: 45px;
+  width: 70%;
+  margin: 0;
+  padding: 5px;
+  border: none;
+  font-size: 1.2rem;
+  background: var(--cc-bck);
+}
+.newsltr-btn {
+  height: 45px;
+  width: 25%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: var(--cc-spec1);
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+/*  */
+.footer-end {
+  grid-column-start: 1;
+  grid-column-end: -1;
+  display: flex;
+  height: 5rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-style: var(--ff-primary);
+}
+.footer-end-links ul li {
+  font-size: 0.8rem;
+}
+.footer-end-right {
+  margin-left: auto;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.footer-end-right h4 {
+  display: inline-block;
+}
+.logo1 {
+  width: 45px;
+  min-height: 20px;
+  margin: 0 0 0 10px;
+  padding: 0;
+}
+
+.headOfFooter {
+  grid-column-start: 1;
+  grid-column-end: -1;
+  font-size: 1.8rem;
+}
+.headOfFooter h1 {
+  padding: 0;
+  margin: 0;
+  font-family: var(--ff-primary);
+  font-weight: 300;
+}
+
+@media screen and (max-width: 1060px) {
+  body {
+    background: white;
+  }
+  .mediaq {
+    transform: scale(0.8);
+  }
+}

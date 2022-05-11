@@ -1,70 +1,37 @@
-const navToggle: NodeListOf<Element> =
-  document.querySelectorAll(".body-nav-toggle");
-const mainBtns: NodeListOf<Element> = document.querySelectorAll(".main-btn");
-const pageContent: NodeListOf<Element> =
-  document.querySelectorAll(".main-content");
-const main: HTMLElement = document.querySelector(".main");
+import {
+  changeTab,
+  changePage,
+  changeContent,
+  changeUrl,
+  getTheWindowLocation,
+} from "./functions.js";
 
-const moreBtn: HTMLElement = document.getElementById("special0");
-const moreContent: Element = document.querySelector(".moreDivContainer");
-// functions
+import {
+  navToggle,
+  mainBtns,
+  pageContent,
+  main,
+  moreBtn,
+  moreContent,
+} from "./DOMElements.js";
 
-const changeTab = (e: Event): void => {
-  const id: string = (e.target as HTMLInputElement).dataset.id;
-  const objectClass = (e.target as HTMLInputElement).classList.contains(
-    "body-nav-toggle"
-  );
-  if (objectClass) {
-    if (id) {
-      // remove active from all the buttons
-      for (let i of navToggle) {
-        i.classList.remove("active");
-      }
-      (e.target as HTMLInputElement).classList.add("active");
-    }
-  }
-};
+// I somehow cannot export this from DOMElements -> bcs of the getTheWindowLocation()
+const currentPage: HTMLElement = document.querySelector(
+  `[data-id*="${getTheWindowLocation()}"]`
+);
 
-const changePage = (e: Event): void => {
-  const id = (e.target as HTMLInputElement).dataset.id;
-  const objectClass = (e.target as HTMLInputElement).classList.contains(
-    "main-btn"
-  );
-  if (objectClass) {
-    if (id) {
-      // remove active fromm all the btns
-      for (let i of mainBtns) {
-        i.classList.remove("active");
-      }
-      (e.target as HTMLInputElement).classList.add("active");
-    }
-  }
-};
-
-const changeContent = (e: Event): void => {
-  const id: string = (e.target as HTMLInputElement).dataset.id;
-  const objectClass = (e.target as HTMLInputElement).classList.contains(
-    "body-nav-toggle"
-  );
-
-  if (objectClass) {
-    if (id) {
-      // remove active from all the elements
-      for (let i of pageContent) {
-        i.classList.remove("activeLinks");
-      }
-      const element: HTMLElement = document.getElementById(id);
-      element.classList.add("activeLinks");
-    }
-  }
-};
+// Happens at the begin
 
 main.addEventListener("click", (e: Event) => {
   changeTab(e);
   changePage(e);
   changeContent(e);
+  // console.log(currentActiveClass);
 });
 
+currentPage.classList.add("active");
+// Setting the active page class from global var
+// console.log(currentActiveClass);
 moreBtn.addEventListener("click", () => {
   moreContent.classList.toggle("activeMore");
 
