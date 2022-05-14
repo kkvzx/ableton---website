@@ -11,42 +11,79 @@
 // 5. ZROBIĆ CAŁĄ STRONĘ NA JEDNYM ARKUSZU HTML Z PRZEKIEROWANIAMI DO INNYCH BODY? BRZMI NAJLEPIEJ
 // **************************************************
 
-import { navToggle, mainBtns, pageContent } from "./DOMElements.js";
+import {
+  navToggle,
+  mainBtns,
+  pageContent,
+  backToTopBtn,
+  bodyNavDiv,
+} from "./DOMElements.js";
 
+// Changes color of the Tab in one html
 export const changeTab = (e: Event): void => {
   const id: string = (e.target as HTMLInputElement).dataset.id;
   const objectClass: boolean = (
     e.target as HTMLInputElement
   ).classList.contains("body-nav-toggle");
+
   if (objectClass) {
     if (id) {
       // remove active from all the buttons
       for (let i of navToggle) {
         i.classList.remove("active");
       }
+      // color change that works only for body nav
       (e.target as HTMLInputElement).classList.add("active");
     }
   }
 };
+// higlighting of the current page and calling changeUrl()
+// export const changePage = (e: Event): DOMTokenList => {
+//   const id: string = (e.target as HTMLInputElement).dataset.id;
+//   const objectClass: boolean = (
+//     e.target as HTMLInputElement
+//   ).classList.contains("main-btn");
 
-export const changePage = (e: Event): DOMTokenList => {
+//   if (objectClass) {
+//     if (id) {
+//       // remove active fromm all the btns
+//       for (let i of mainBtns) {
+//         i.classList.remove("active");
+//       }
+//       changeUrl(id);
+//       return (e.target as HTMLInputElement).classList;
+//     }
+//   }
+// };
+// function that takes btnString (real class from DOM in order to ensure that there is no more than one active class)
+// domBtnString list of Elements - thanks for this function can clear all the actives
+// activator is a string that activate class from css
+export const changePage = (
+  e: Event,
+  btnString: string,
+  domBtnString: NodeListOf<Element>,
+  activator: string
+): DOMTokenList => {
   const id: string = (e.target as HTMLInputElement).dataset.id;
+
   const objectClass: boolean = (
     e.target as HTMLInputElement
-  ).classList.contains("main-btn");
+  ).classList.contains(`${btnString}`);
 
   if (objectClass) {
     if (id) {
       // remove active fromm all the btns
-      for (let i of mainBtns) {
-        i.classList.remove("active");
+      for (let i of domBtnString) {
+        i.classList.remove(`${activator}`);
       }
+      // adding active class happens later - this function only removes active
       changeUrl(id);
       return (e.target as HTMLInputElement).classList;
     }
   }
 };
 
+// changes content of current html (tab swapping)
 export const changeContent = (e: Event): void => {
   const id: string = (e.target as HTMLInputElement).dataset.id;
   const objectClass: boolean = (
@@ -64,13 +101,54 @@ export const changeContent = (e: Event): void => {
     }
   }
 };
+
+// changing current page to diffrent .html file
 export const changeUrl = (id: string): void => {
   document.location = `${id}.html`;
 };
 
+// Returns location of current window in nicer form
 export const getTheWindowLocation = (): string => {
   let windowLocation = window.location.pathname;
   windowLocation = windowLocation.replace("/", "");
   windowLocation = windowLocation.replace(".html", "");
   return windowLocation;
+};
+
+// Function that toggle some element after clicking interactive Element and made changes in text of this interactive element
+export const TurnOnOffElement = (
+  elementToPop: Element,
+  interactiveEl: HTMLElement,
+  activeClassString: string,
+  stringBefore: string,
+  stringAfter: string
+): void => {
+  elementToPop.classList.toggle(`${activeClassString}`);
+  if (stringBefore && stringAfter) {
+    if (elementToPop.classList.contains(`${activeClassString}`)) {
+      interactiveEl.innerHTML = `${stringAfter}`;
+    } else {
+      interactiveEl.innerHTML = `${stringBefore}`;
+    }
+  }
+};
+
+export const scrollFunction = (): void => {
+  if (
+    document.body.scrollTop > 200 ||
+    document.documentElement.scrollTop > 200
+  ) {
+    backToTopBtn.style.display = "block";
+    // bodyNavDiv.classList.add("activeBodyNavDiv");
+  } else {
+    backToTopBtn.style.display = "none";
+    // bodyNavDiv.classList.remove("activeBodyNavDiv");
+  }
+};
+
+export const scrollToTop = (): void => {
+  document.body.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 };

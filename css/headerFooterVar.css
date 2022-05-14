@@ -1,5 +1,6 @@
 /* styling */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;600&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,900;1,500&display=swap");
 
 /* variables */
 :root {
@@ -16,12 +17,16 @@
 
 html {
   height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 body {
   margin: 0;
   background: var(--cc-bck);
   font-weight: 700;
   min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 .main {
   width: 85vw;
@@ -43,6 +48,37 @@ javascript
 .activeMore {
   display: grid !important;
 }
+.unactive {
+  display: none !important;
+}
+.activePopUp {
+  height: 95vh !important;
+}
+.activeSmallPopUpList {
+  display: block !important;
+}
+.activeBodyNavDiv {
+  position: fixed;
+}
+
+#backToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: rgba(106, 106, 106, 0.451);
+  color: white;
+  cursor: pointer;
+  padding: 20px;
+  height: 80px;
+  font-size: 18px;
+}
+#backToTopBtn:hover {
+  background-color: #555;
+}
 
 /* ==========
     HEADER
@@ -60,15 +96,15 @@ javascript
   border-bottom: 3px solid var(--cc-bck);
   color: black;
 }
-.item1,
+
 .item2,
 .item3 {
-  width: 200px;
+  width: 390px;
   margin: var(--sp-links);
   font-family: var(--ff-primary);
   font-size: var(--ff-size);
   letter-spacing: var(--letter-sp);
-  /* background:grey; */
+  /* background: grey; */
 }
 /* logo */
 .item1 {
@@ -81,14 +117,16 @@ javascript
 }
 /* main menu */
 .item2 {
-  width: 700px;
-  min-height: 20px;
-  margin: 0;
+  min-width: 570px;
+  margin-right: 0;
   /* flex-grow:4; */
+  margin: 0;
 }
+
 ul {
   list-style: none;
   padding: 0;
+  /* width: 550px; */
 }
 .item2 ul li,
 .item3 ul li,
@@ -109,40 +147,58 @@ ul {
   text-decoration: none;
   color: black;
   text-transform: capitalize;
+  font-weight: 600;
+}
+/* body-nav */
+.body-nav {
+  font-size: var(--ff-spec2);
+  font-family: var(--ff-primary);
+  margin-left: var(--sp-links);
+}
+.body-nav li {
+  margin-left: 0;
 }
 #special0 {
   color: var(--cc-spec0);
+  margin-right: 0;
+  padding-right: 0;
 }
 .gridElementOne {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: 0;
   /* height: 4.2rem; */
 }
 /* right menu */
 .item3 {
-  min-width: 370px;
+  min-width: 400px;
   margin-left: auto;
-  min-height: 20px;
+  display: flex;
+  justify-content: right;
 }
 .item3 ul {
   text-align: right;
 }
 .item3 ul li {
-  margin: 0 0 0 var(--sp-links);
+  margin-right: var(--ff-spec2);
+  display: inline;
+}
+.item3 ul li a {
+  /* margin: 0; */
 }
 
 #special1 {
   color: var(--cc-spec1);
+  margin-right: 0;
 }
 #special2 {
   font-size: var(--ff-spec2);
-  margin-right: var(--sp-links);
+  /* margin-right: var(--sp-links); */
 }
 /* More buttons starts here */
 /* main more button container */
 .moreDivContainer {
-  display: grid;
   display: none;
 }
 .moreOnContainer {
@@ -207,6 +263,40 @@ ul {
   margin: 0;
 }
 /* More buttons starts ends */
+
+/* small popup menu */
+.smallPopUpMenu {
+  width: 100%;
+  background: var(--cc-spec1);
+  display: flex;
+  height: 0vh;
+  margin-top: 0;
+  transition: all 0.4s;
+}
+.smallPopUpMenuList {
+  display: none;
+  margin-top: 0;
+}
+.smallPopUpMenu ul li {
+  margin: 1rem var(--sp-links);
+}
+.mainTextPopUp,
+.secondaryTextPopUp {
+  text-decoration: none;
+  color: white;
+  font-family: var(--ff-primary);
+  font-size: 1.5rem;
+  letter-spacing: var(--letter-sp);
+}
+.hidden-btn {
+  display: none;
+  color: black;
+  text-decoration: none;
+  font-family: var(--ff-primary);
+}
+.secondaryTextPopUp {
+  font-size: 0.7rem;
+}
 
 /* ==========
     FOOTER
@@ -278,6 +368,11 @@ ul {
 }
 .footer-end-links ul li {
   font-size: 0.8rem;
+  text-decoration: none;
+}
+.footer-end-links ul li a {
+  text-decoration: none;
+  color: black;
 }
 .footer-end-right {
   margin-left: auto;
@@ -307,11 +402,47 @@ ul {
   font-weight: 300;
 }
 
-@media screen and (max-width: 1060px) {
+.main-content {
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  flex-direction: column;
+}
+
+@media (max-width: 1060px) {
   body {
-    background: white;
+    background: var(--cc-main);
   }
   .mediaq {
     transform: scale(0.8);
+  }
+
+  .main-btn,
+  #special0,
+  .item3 {
+    display: none;
+  }
+  .hidden-btn {
+    display: flex;
+  }
+  .moreDivContainer {
+    display: none !important;
+  }
+  .moreFromContainer {
+    margin-left: 0;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+  }
+  .moreFromContainer h3 {
+    color: white;
+  }
+  .moreFromTextDiv {
+    width: 70%;
+    height: 10rem;
+  }
+  .moreFromTextDiv a p {
+    color: white;
+    font-size: 0.8rem;
   }
 }
