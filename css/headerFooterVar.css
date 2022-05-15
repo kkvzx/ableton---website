@@ -184,9 +184,6 @@ ul {
   margin-right: var(--ff-spec2);
   display: inline;
 }
-.item3 ul li a {
-  /* margin: 0; */
-}
 
 #special1 {
   color: var(--cc-spec1);
